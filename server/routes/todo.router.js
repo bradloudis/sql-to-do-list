@@ -19,6 +19,23 @@ router.get('/', (req, res) => {
 });
 
 // POST ROUTE
+router.post('/', (req, res) => {
+  const todoData = req.body;
+  const queryText = `INSERT INTO "todo" ("task", "status")
+    VALUES ($1, 'false');`;
+
+  const queryArray = [todoData.task];
+
+  pool
+    .query(queryText, queryArray)
+    .then((dbResponse) => {
+      res.sendStatus(201);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.sendStatus(500);
+    });
+});
 
 // UPDATE ROUTE
 
