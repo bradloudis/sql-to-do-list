@@ -3,6 +3,7 @@ $(document).ready(readyUp);
 function readyUp() {
   console.log('js and JQ - up and running!');
   $('#js-addBtn').on('click', handleClickAdd);
+  $('.js-taskTable').on('click', '.js-deleteBtn', handleClickDelete);
   getTasks();
 }
 
@@ -11,6 +12,12 @@ function handleClickAdd() {
     task: $('#js-task').val(),
   };
   postTask(taskObj);
+}
+
+function handleClickDelete() {
+  const taskId = $(this).data('id');
+  // console.log('DELETE', taskId);
+  deleteTask(taskId);
 }
 
 // API CALLS BELOW HERE
@@ -47,6 +54,22 @@ function getTasks() {
     });
 }
 
+// DELETE takes the id from the delete btn and removes that specific task from the DB
+function deleteTask(taskId) {
+  $.ajax({
+    type: 'DELETE',
+    url: `/todo/${taskId}`,
+  })
+    .then((deleteMsg) => {
+      // DB is updated, need to update DOM
+      getTasks();
+    })
+    .catch((err) => {
+      console.log(err);
+      alert('whoopsie daisy!');
+    });
+}
+
 function render(response) {
   $('.js-taskTable').empty();
   for (let task of response) {
@@ -54,7 +77,7 @@ function render(response) {
       <tr>
         <td>${task.task}</td>
         <td><button>Mark Complete</button></td>
-        <td><button>Delete</button></td>
+        <td><button class="js-deleteBtn" data-id="${task.id}">Delete</button></td>
       </tr>
     `);
   }
