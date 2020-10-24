@@ -38,6 +38,22 @@ router.post('/', (req, res) => {
 });
 
 // UPDATE ROUTE
+// PUT
+router.put('/status/:id', (req, res) => {
+  const newTaskInfo = req.body;
+  const queryText = `UPDATE "todo" SET status=$1 WHERE id=$2;`;
+  const queryArray = [newTaskInfo.status, req.params.id];
+
+  pool
+    .query(queryText, queryArray)
+    .then((dbResponse) => {
+      res.sendStatus(200);
+    })
+    .catch((err) => {
+      console.warning(err);
+      res.sendStatus(500);
+    });
+});
 
 // DELETE ROUTE
 router.delete('/:id', (req, res) => {
