@@ -12,5 +12,24 @@
     <header>
       <h1>TO-DO LIST</h1>
     </header>
+    <main>
+      <h2>Add a task to the to-do list!</h2>
+      <div class="inputDiv">
+        <input type="text" placeholder="TASK" id="js-task" />
+        <button id="js-addBtn">Add Task</button>
+      </div>
+      <div class="tableDiv">
+        <table>
+          <thead>
+            <th>TASK</th>
+            <th>STATUS</th>
+            <th>DELETE</th>
+          </thead>
+          <tbody class="js-taskTable">
+            <!-- to-do list appended here from DB -->
+          </tbody>
+        </table>
+      </div>
+    </main>
   </body>
 </html>
