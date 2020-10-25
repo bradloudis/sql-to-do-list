@@ -3,6 +3,7 @@ body {
   background-color: #a1a999;
   color: #280202;
   font-family: 'Abel', serif;
+  margin: 20px;
 }
 
 .completedTask {
