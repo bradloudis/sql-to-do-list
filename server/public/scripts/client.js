@@ -105,12 +105,27 @@ function completeTask(id, status) {
 function render(response) {
   $('.js-taskTable').empty();
   for (let task of response) {
-    $('.js-taskTable').append(`
-      <tr>
-        <td>${task.task}</td>
-        <td><button class="js-completeBtn" data-id="${task.id}" data-status="${task.status}">Mark Complete</button></td>
-        <td><button class="js-deleteBtn" data-id="${task.id}">Delete</button></td>
-      </tr>
-    `);
+    if (task.status) {
+      $('.js-taskTable').append(`
+        <tr>
+          <td class="completedTask">${task.task}</td>
+          <td><button class="js-completeBtn" data-id="${task.id}" data-status="${task.status}">Mark Incomplete</button></td>
+          <td><button class="js-deleteBtn" data-id="${task.id}">Delete</button></td>
+        </tr>
+      `);
+    } else {
+      $('.js-taskTable').append(`
+        <tr>
+          <td>${task.task}</td>
+          <td><button class="js-completeBtn" data-id="${task.id}" data-status="${task.status}">Mark Complete</button></td>
+          <td><button class="js-deleteBtn" data-id="${task.id}">Delete</button></td>
+        </tr>
+      `);
+    }
+    // if (task.status) {
+    //   const completedTask = task.task;
+    //   console.log(completedTask, 'complete!');
+    //   // completedTask.addClass('completedTask');
+    // }
   }
 }

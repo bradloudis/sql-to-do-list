@@ -4,3 +4,7 @@ body {
   color: #280202;
   font-family: 'Abel', serif;
 }
+
+.completedTask {
+  text-decoration: line-through;
+}
