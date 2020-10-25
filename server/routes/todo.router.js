@@ -4,12 +4,12 @@ const pool = require('../modules/pool');
 
 // GET ROUTE - sends complete list of tasks from DB to client
 router.get('/', (req, res) => {
-  const queryText = 'SELECT * FROM "todo";';
+  const queryText = 'SELECT * FROM "todo" ORDER BY "id";';
 
   pool
     .query(queryText)
     .then((dbResponse) => {
-      console.log(dbResponse);
+      // console.log(dbResponse);
       res.send(dbResponse.rows);
     })
     .catch((err) => {
