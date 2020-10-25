@@ -6,6 +6,10 @@
 
 Creating a to-do list web application using the full stack.
 
+## Screenshot
+
+<img width="482" alt="Screen Shot 2020-10-25 at 6 29 00 PM" src="https://user-images.githubusercontent.com/69406122/97122037-c2237d80-16f0-11eb-89ad-256c2b54938d.png">
+
 ## Installation
 
 1. Create a database named `weekend-to-do-app`
