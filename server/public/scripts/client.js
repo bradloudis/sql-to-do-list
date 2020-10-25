@@ -34,6 +34,10 @@ function handleClickComplete() {
   completeTask(taskId, taskStatus);
 }
 
+function clearInput() {
+  $('#js-task').val('');
+}
+
 // API CALLS BELOW HERE
 // ---------------------------
 
@@ -47,6 +51,7 @@ function postTask(taskObj) {
     .then(function (response) {
       //database is updated, need to update DOM
       getTasks();
+      clearInput();
     })
     .catch(function (err) {
       console.log(err);
